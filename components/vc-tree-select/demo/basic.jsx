@@ -133,14 +133,14 @@ export default {
     },
 
     filterTreeNode (input, child) {
-      return String(child.props.title).indexOf(input) === 0
+      return String(child.title).indexOf(input) === 0
     },
   },
 
   render () {
     return (
       <div style={{ margin: '20px' }}>
-        {/* <h2>tree-select in dialog</h2>
+        <h2>tree-select in dialog</h2>
         <button class='btn btn-primary' onClick={this.onClick}>show dialog</button>
         {this.visible ? <Dialog
           visible={this.visible}
@@ -170,6 +170,7 @@ export default {
             />
           </div>
         </Dialog> : null}
+
         <h2>single select</h2>
         <TreeSelect
           style={{ width: '300px' }}
@@ -196,7 +197,7 @@ export default {
             this.value = value
           } }
           dropdownVisibleChange={(v, info) => {
-            console.log('single onDropdownVisibleChange', v, info)
+            console.log('single dropdownVisibleChange', v, info)
             // document clicked
             if (info.documentClickClose && this.value === '0-0-0-0-value') {
               return false
@@ -204,9 +205,9 @@ export default {
             return true
           } }
           onSelect={this.onSelect}
-        /> */}
+        />
 
-        {/* <h2>single select (just select children)</h2>
+        <h2>single select (just select children)</h2>
         <TreeSelect
           style={{ width: '300px' }}
           transitionName='rc-tree-select-dropdown-slide-up'
@@ -237,9 +238,9 @@ export default {
           onChange={this.onMultipleChange}
           onSelect={this.onSelect}
           allowClear
-        /> */}
+        />
 
-        {/* <h2>check select</h2>
+        <h2>check select</h2>
         <TreeSelect
           class='check-select'
           transitionName='rc-tree-select-dropdown-slide-up'
@@ -254,12 +255,12 @@ export default {
           inputValue={null}
           treeData={gData}
           treeNodeFilterProp='title'
-          treeCheckable showCheckedStrategy={SHOW_PARENT}
+          treeCheckable // showCheckedStrategy={SHOW_PARENT}
           onChange={this.onChange}
           onSelect={this.onSelect}
-        /> */}
+        />
 
-        {/* <h2>labelInValue & show path</h2>
+        <h2>labelInValue & show path</h2>
         <TreeSelect
           style={{ width: '500px' }}
           transitionName='rc-tree-select-dropdown-slide-up'
@@ -273,9 +274,9 @@ export default {
           treeNodeFilterProp='label'
           filterTreeNode={false}
           onChange={this.onChangeLV}
-        /> */}
+        />
 
-        {/* <h2>use treeDataSimpleMode</h2>
+        <h2>use treeDataSimpleMode</h2>
         <TreeSelect
           style={{ width: '300px' }}
           dropdownStyle={{ maxHeight: '200px', overflow: 'auto' }}
@@ -290,7 +291,7 @@ export default {
           treeCheckable showCheckedStrategy={SHOW_PARENT}
           onChange={this.onChange}
           onSelect={this.onSelect}
-        /> */}
+        />
 
         <h2>Testing in extreme conditions (Boundary conditions test) </h2>
         <TreeSelect
@@ -310,7 +311,7 @@ export default {
           onChange={(val) => console.log(val, arguments)}
         />
 
-        {/* <h2>use TreeNode Component (not recommend)</h2>
+        <h2>use TreeNode Component (not recommend)</h2>
         <TreeSelect
           style={{ width: '200px' }}
           dropdownStyle={{ maxHeight: '200px', overflow: 'auto' }}
@@ -338,7 +339,7 @@ export default {
             <TreeNode value='2same value' title='2same title' key='0-2-0' />
           </TreeNode>
           <TreeNode value='same value3' title='same title' key='0-3' />
-        </TreeSelect> */}
+        </TreeSelect>
       </div>
     )
   },

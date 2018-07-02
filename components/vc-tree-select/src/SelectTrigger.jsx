@@ -154,7 +154,7 @@ const SelectTrigger = {
       loopAllChildren(treeNodes, (child, index, pos) => {
         if (this.filterTreeNode_(this.inputValue, child)) {
           filterPoss.push(pos)
-          this._expandedKeys.push(getKey(child) + '')
+          this._expandedKeys.push(String(getKey(child)))
         }
       })
 
@@ -276,7 +276,8 @@ const SelectTrigger = {
         }
         const treeNodeProps = {
           ...child.data,
-          key: child.key + '',
+          props: getAllProps(child),
+          key: String(child.key),
         }
         if (child && child.componentOptions.children) {
           // null or String has no Prop
@@ -307,11 +308,11 @@ const SelectTrigger = {
     const halfCheckedKeys = []
     loopAllChildren(treeNodes, (child) => {
       if (props.value.some(item => item.value === getValuePropValue(child))) {
-        keys.push(getKey(child) + '')
+        keys.push(String(getKey(child)))
       }
       if (props.halfCheckedValues &&
         props.halfCheckedValues.some(item => item.value === getValuePropValue(child))) {
-        halfCheckedKeys.push(getKey(child) + '')
+        halfCheckedKeys.push(String(getKey(child)))
       }
     })
 

@@ -148,7 +148,7 @@ export function loopAllChildren (childs, callback, parent) {
         loop(item.componentOptions.children, pos, { node: item, pos })
       }
       if (item) {
-        callback(item, index, pos, item.data.key || pos, getSiblingPosition(index, len, {}), _parent)
+        callback(item, index, pos, item.key || pos, getSiblingPosition(index, len, {}), _parent)
       }
     })
   }

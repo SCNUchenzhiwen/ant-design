@@ -577,7 +577,9 @@ const Select = {
         checkedNodes = checkedNodesPositions.filter(itemObj => posArr.indexOf(itemObj.pos) !== -1)
           .map(itemObj => itemObj.node)
       } else {
-        checkedNodes = checkedNodes.filter(n => !n.props.children)
+        checkedNodes = checkedNodes.filter(n => {
+          return !n.componentOptions.children
+        })
       }
       return checkedNodes
     },
