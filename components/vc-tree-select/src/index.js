@@ -2,12 +2,13 @@
 import TreeSelect from './Select'
 import TreeNode from './TreeNode'
 import omit from 'omit.js'
+import { SHOW_ALL, SHOW_PARENT, SHOW_CHILD } from './strategies'
 TreeSelect.TreeNode = TreeNode
 
 export default {
   functional: true,
   render (h, context) {
-    const { props, listeners, children, data } = context
+    const { props, listeners, children = [], data } = context
     const treeSelectProps = {
       ...omit(data, ['attrs']),
       props: {
@@ -19,6 +20,7 @@ export default {
     }
     return <TreeSelect {...treeSelectProps}/>
   },
+  TreeNode,
+  SHOW_ALL, SHOW_PARENT, SHOW_CHILD,
 }
-export { TreeNode }
-export { SHOW_ALL, SHOW_PARENT, SHOW_CHILD } from './strategies'
+export { TreeNode, SHOW_ALL, SHOW_PARENT, SHOW_CHILD }

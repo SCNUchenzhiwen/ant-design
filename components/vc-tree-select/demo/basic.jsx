@@ -255,7 +255,7 @@ export default {
           inputValue={null}
           treeData={gData}
           treeNodeFilterProp='title'
-          treeCheckable // showCheckedStrategy={SHOW_PARENT}
+          treeCheckable showCheckedStrategy={SHOW_PARENT}
           onChange={this.onChange}
           onSelect={this.onSelect}
         />

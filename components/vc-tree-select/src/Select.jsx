@@ -63,6 +63,7 @@ const Select = {
   name: 'VCTreeSelect',
   props: initDefaultProps({ ...SelectPropTypes, __propsSymbol__: Symbol }, defaultProps),
   data () {
+    this.preProps = { ...props }
     let value = []
     const props = getOptionProps(this)
     if ('value' in props) {
@@ -78,7 +79,6 @@ const Select = {
     // if (props.combobox) {
     //   inputValue = value.length ? String(value[0].value) : '';
     // }
-    this.preProps = { ...props }
     return {
       sValue: value,
       sInputValue: inputValue,
@@ -731,7 +731,7 @@ const Select = {
 
     openIfHasChildren () {
       const props = this.$props
-      if (props.children.length || !isMultiple(props)) {
+      if (props.children.length || (props.treeData && props.treeData.length) || !isMultiple(props)) {
         this.setOpenState(true)
       }
     },
@@ -916,7 +916,7 @@ const Select = {
     renderTreeData (props) {
       const validProps = props || this.$props
       if (validProps.treeData) {
-        if (props && props.treeData === this.$props.treeData && this.renderedTreeData) {
+        if (props && props.treeData === this.preProps.treeData && this.renderedTreeData) {
           // cache and use pre data.
           this._cachetreeData = true
           return this.renderedTreeData
@@ -935,7 +935,7 @@ const Select = {
           }
           treeData = processSimpleTreeData(treeData, simpleFormat)
         }
-        return this.loopTreeData(treeData, undefined, this.$props.treeCheckable)
+        return this.loopTreeData(treeData, undefined, this.preProps.treeCheckable)
       }
     },
   },
