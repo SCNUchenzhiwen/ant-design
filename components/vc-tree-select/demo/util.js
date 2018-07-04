@@ -41,7 +41,7 @@ export const gData = generateData()
 
 export function generateTreeNodes (treeNode) {
   const arr = []
-  const key = treeNode.props.eventKey
+  const key = treeNode.eventKey
   for (let i = 0; i < 3; i++) {
     arr.push({ label: `${key}-${i}-label`, value: `${key}-${i}-value`, key: `${key}-${i}` })
   }

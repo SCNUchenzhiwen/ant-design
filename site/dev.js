@@ -10,7 +10,7 @@ import Api from './components/api'
 import './components'
 import demoBox from './components/demoBox'
 import demoContainer from './components/demoContainer'
-import Test from '../components/vc-tree-select/demo/disable'
+import Test from '../components/vc-tree-select/demo/filter'
 
 Vue.use(VueClipboard)
 Vue.use(VueRouter)

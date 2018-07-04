@@ -63,9 +63,9 @@ const Select = {
   name: 'VCTreeSelect',
   props: initDefaultProps({ ...SelectPropTypes, __propsSymbol__: Symbol }, defaultProps),
   data () {
-    this.preProps = { ...props }
     let value = []
     const props = getOptionProps(this)
+    this.preProps = { ...props }
     if ('value' in props) {
       value = toArray(props.value)
     } else {
@@ -308,7 +308,9 @@ const Select = {
 
       const checkEvt = info.event === 'check'
       if (isMultiple(props)) {
-        this.clearSearchInput()
+        this.$nextTick(() => { // clearSearchInput will change sInputValue
+          this.clearSearchInput()
+        })
         if (checkEvt) {
           value = this.getCheckedNodes(info, props).map(n => {
             return {
